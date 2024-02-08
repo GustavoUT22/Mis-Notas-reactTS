@@ -4,6 +4,7 @@ import {
   StyledTitle,
   StyledNotes,
   StyledNote,
+  StyledForm,
 } from "./TodoList.styles";
 import uuid from "react-uuid";
 import Textarea from "../Textarea/Textarea";
@@ -31,7 +32,7 @@ function TodoList() {
     return storedNotes ? JSON.parse(storedNotes) : initialNotes;
   });
 
-  const [newNote, setNewNote] = useState("");
+  const [newNote, setNewNote] = useState<string>("");
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
@@ -55,15 +56,17 @@ function TodoList() {
   return (
     <Container>
       <StyledTitle>Mis Notas</StyledTitle>
-      <Textarea
-        onChange={(e) => setNewNote(e.target.value)}
-        value={newNote}
-        name="texto"
-        placeholder="Write here"
-      />
-      <button className="button-create" onClick={addTask}>
-        Crear
-      </button>
+      <StyledForm onSubmit={addTask}>
+        <Textarea
+          onChange={(e) => setNewNote(e.target.value)}
+          value={newNote}
+          name="texto"
+          placeholder="Write here"
+        />
+        <button type="submit" className="button-create">
+          Crear
+        </button>
+      </StyledForm>
       <StyledNotes>
         {notes.map((nota) => (
           <StyledNote key={nota.id}>

@@ -8,6 +8,7 @@ export const Container = styled.div`
   background-color: #f2f2f2;
   padding: 32px 16px;
   gap: 16px;
+
   .button-create {
     border-radius: 1rem;
     padding: 0.5rem 1rem;
@@ -48,6 +49,7 @@ export const StyledNote = styled.div`
   gap: 1rem;
   display: flex;
   flex-direction: column;
+  word-break: break-all;
   font-weight: 400;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -68,4 +70,8 @@ export const StyledNote = styled.div`
       background-color: #8f8f8f;
     }
   }
+`;
+
+export const StyledForm = styled.form`
+  width: 100%;
 `;
